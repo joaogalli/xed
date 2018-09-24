@@ -1,0 +1,12 @@
+.mattoolbar-full-width {
+  width: 100%;
+}
+
+.matinput-full-width {
+  display: flex;
+  flex-direction: column;
+}
+
+.matinput-full-width > * {
+  width: 100%;
+}
