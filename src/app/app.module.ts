@@ -22,11 +22,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SignupComponent } from './auth/signup/signup.component';
+import {UserService} from './user/user.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent
+    SigninComponent,
+    SignupComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
-  providers: [MediaMatcher, AuthService],
+  providers: [MediaMatcher, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
