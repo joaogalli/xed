@@ -1,0 +1,34 @@
+<div fxLayout="row" fxLayoutAlign="center none" style="padding: 10px">
+  <div fxFlex="100" fxFlex.gt-xs="400px">
+    <mat-card>
+      <h2>Acessar</h2>
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="matinput-full-width">
+          <input matInput placeholder="E-mail"
+                 formControlName="email">
+          <mat-error *ngIf="!signinForm.get('email').valid && signinForm.get('email').touched">
+            Insira um e-mail válido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="matinput-full-width">
+          <input matInput type="password" placeholder="Senha"
+                 formControlName="password">
+          <mat-error *ngIf="!signinForm.get('password').valid && signinForm.get('password').touched">
+            Insira uma senha válida.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-progress-spinner mode="indeterminate" *ngIf="loginDisabled" diameter="36"></mat-progress-spinner>
+        <button mat-raised-button color="primary" *ngIf="!loginDisabled" type="submit">Login</button>
+
+        <div style="margin-top: 10px;" [ngSwitch]="signinError">
+          <div *ngSwitchCase="''"></div>
+          <div *ngSwitchCase="'auth/user-not-found'">Este e-mail não foi encontrado.</div>
+          <div *ngSwitchCase="'auth/wrong-password'">Senha incorreta.</div>
+          <div *ngSwitchDefault>Erro: {{signinError}}</div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
